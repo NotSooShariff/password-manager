@@ -42,7 +42,7 @@ export default function Page() {
                 <div className="flex-grow pl-4">
                     <h2 className="font-medium title-font text-sm text-white mb-1 tracking-wider">STEP 1</h2>
                     <p className="leading-relaxed">Head over to the Chrome Password Manager by typing <span className='bg-gray-700 text-white-700 font-mono px-2 py-1 rounded'>chrome://password-manager/settings</span> in your URL bar.</p>
-                    <img className="rounded-lg" src="https://raw.githubusercontent.com/NotSooShariff/Password-Manager/main/src/assets/images/setup1hd.png" alt="" />
+                    <img className="rounded-lg mt-6" src="https://raw.githubusercontent.com/NotSooShariff/Password-Manager/main/src/assets/images/setup1hdx.png" alt="" />
                 </div>
                 </div>
 
