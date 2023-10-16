@@ -8,7 +8,6 @@ import FeaturesSection from '@/components/landing/features'
 import UsageSection from '@/components/landing/usage'
 import TeamSection from '@/components/landing/team'
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { useRouter } from 'next/router'
 import { auth } from '@/utils/firebase'
 
 export default function Home() {
