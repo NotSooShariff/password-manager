@@ -8,11 +8,23 @@ import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { auth } from '@/utils/firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useRouter } from "next/navigation";
+import supabase from "@supabase/supabase-js"
+import AuthForm from '@/components/login/supalog'
+
+
+    
+  
+
+
 
 export default function Login() {
   const router = useRouter()
   const [user, loading] = useAuthState(auth)
   
+  // const supalogin = async() =>{
+  //   let { data , error } = await supabase.auth.signUp
+  // }
+
   if(user){
     router.push('/dashboard')
   }
@@ -125,13 +137,28 @@ export default function Login() {
                   className="w-full bg-gray-800 rounded border border-gray-700 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-900 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                   required
                 />
-              </div>
+              </div> 
+
               <button className="text-white bg-indigo-500 border-0 my-2 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">
               <div className="flex items-center justify-center">
                 <MdOutlineVpnKey className="mx-3"/> 
                   Secure Login
                 </div>
               </button>
+
+              {/* Supabase Magic Link Setup to Try Later */}
+              {/* <div className="row">
+                    <div className="col-6">
+                      <h1 className="header">Supabase Auth + Storage</h1>
+                      <p className="">
+                        Experience our Auth and Storage through a simple profile management example. Create a user
+                        profile and upload an avatar image. Fast, simple, secure.
+                      </p>
+                    </div>
+                    <div className="col-6 auth-widget">
+                      <AuthForm />
+                    </div>
+              </div> */}
               <button onClick={GoogleLogin} className="text-white bg-gray-800 border-0 my-2 py-2 px-6 focus:outline-none hover:bg-gray-700 rounded text-lg">
                 <div className="flex items-center justify-center">
                 <FcGoogle className="mx-3"/> Login with Google

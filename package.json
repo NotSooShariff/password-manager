@@ -9,6 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@supabase/auth-helpers-nextjs": "^0.8.1",
+    "@supabase/auth-ui-react": "^0.4.6",
+    "@supabase/auth-ui-shared": "^0.1.8",
     "@supabase/supabase-js": "^2.38.1",
     "firebase": "^10.5.0",
     "framer-motion": "^10.16.4",
@@ -34,6 +37,7 @@
     "eslint": "^8",
     "eslint-config-next": "13.5.4",
     "postcss": "^8",
+    "supabase": "^1.106.1",
     "tailwindcss": "^3",
     "typescript": "^5"
   }
