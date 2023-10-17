@@ -1,7 +1,13 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import React from 'react';
 import { BsShieldFillCheck } from 'react-icons/bs'
 import { PiWarningBold } from 'react-icons/pi'
+import supabase from '@/config/supabaseClient';
+import axios from 'axios';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { auth } from '@/utils/firebase';
+
+const querystring = require('querystring'); // Import the querystring module
 
 interface CSVEntry {
   name: string;
@@ -11,45 +17,79 @@ interface CSVEntry {
   note: string;
 }
 
-
 const UploadForm = () => {
   const [file, setFile] = useState<File | null>(null);
   const [uploadComplete, setUploadComplete] = useState(false);
   const [formattingIncorrect, setReuploadFile] = useState(false);
+  const [user, loading] = useAuthState(auth);
+  const baseUrl = "http://localhost:5000"
 
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const selectedFile = e.target.files?.[0];
-    if (selectedFile) {
+  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+  const selectedFile = e.target.files?.[0];
+
+  if (selectedFile && user) {
       if (selectedFile.type === 'text/csv') {
         const reader = new FileReader();
         reader.onload = (event) => {
           if (event.target) {
             const csvContent = event.target.result as string;
             console.log('CSV Content:', csvContent);
+            console.log('CSV Content Type:', typeof csvContent);
+            const rows = csvContent.split('\n');
 
-            // Convert the CSV content to a JSON format
-            const lines = csvContent.split('\n');
-            const header = lines[0].split(',');
-            const jsonData = [];
-            for (let i = 1; i < lines.length; i++) {
-              const data = lines[i].split(',');
+            // Extract the header (first row)
+            const header = rows[0].split(',');
+            
+            // Process each entry (from the second row onwards)
+            for (let i = 1; i < rows.length; i++) {
+              const data = rows[i].split(',');
               if (data.length === header.length) {
-                const entry: CSVEntry = {
-                  name: data[0],
+                const entry = {
+                  websitename: data[0],
                   url: data[1],
                   username: data[2],
                   password: data[3],
                   note: data[4],
                 };
-                jsonData.push(entry);
+                
+                if(data[4].length > 3){
+                  var note = `The note for ${data[0]} is ${data[4]}`
+                } else {
+                  var note = data[0]
+                }
+                const requestData = {
+                  useremail: user.email,
+                  url: data[1],
+                  username: data[2],
+                  password: data[3],
+                  note: note,
+                };
+                
+                // URL-encode the requestData object
+                const encodedData = querystring.stringify(requestData);
+                
+                // Send a POST request to the store endpoint
+                axios.post(`${baseUrl}/store`, encodedData, {
+                  headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded', // Set the content type
+                  },
+                })
+                  .then(response => {
+                    // Handle the response from the server
+                    console.log('Data stored successfully:', response.data);
+                  })
+                  .catch(error => {
+                    // Handle any errors that occur during the request
+                    console.error('Error:', error);
+                  });
+
+                  
+                
               }
             }
 
-            // Store the JSON data in localStorage
-            localStorage.setItem('csvData', JSON.stringify(jsonData));
+                
 
-            // Log the JSON data
-            console.log('CSV Data as JSON:', jsonData);
 
             setUploadComplete(true);
           }

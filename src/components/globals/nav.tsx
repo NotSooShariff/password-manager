@@ -37,13 +37,13 @@ const PortalNavigation = () =>{
             <div className="flex items-center">
                 <div className="flex items-center ml-5">
                     <div>
-                    <button onClick={toggleUserMenu} type="button" className="flex text-l bg-gray-900 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" aria-expanded="false" data-dropdown-toggle="dropdown-user">
+                    <button onClick={toggleUserMenu} type="button" className=" flex text-l bg-gray-900 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" aria-expanded="false" data-dropdown-toggle="dropdown-user">
                         <span className="sr-only">Open user menu</span>
                         <img className="w-8 h-8 rounded-full" src={user ? user.photoURL ?? "https://dummyimage.com/201x201" : "https://dummyimage.com/201x201"} alt="user photo"/>
                     </button>
                     </div>
                     <div className="absolute top-full right-5 z-50 p-2">
-                    <div className={`z-50 my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow ${isMenuOpen ? 'block' : 'hidden'} dark:bg-gray-900 dark:divide-gray-600`} id="dropdown-user">
+                    <div className={`border-2 border-gray-700 z-50 my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow ${isMenuOpen ? 'block' : 'hidden'} dark:bg-gray-900 dark:divide-gray-600`} id="dropdown-user">
                     <div className="px-4 py-3" role="none">
                         <p className="text-l text-gray-900 dark:text-white" role="none">
                         {user && (user.displayName)} 

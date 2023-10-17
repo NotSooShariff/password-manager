@@ -2,15 +2,54 @@
 import { auth } from '@/utils/firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useRouter } from "next/navigation"
-import { useState } from 'react'
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 import PortalNavigation from '@/components/globals/nav';
 import PortalSidebar from '@/components/globals/sidebar';
 import Link from 'next/link';
 import UploadForm from '@/components/setup/upload';
+import supabase from '@/config/supabaseClient';
+
 
 export default function Page() {
     const [user, loading] = useAuthState(auth);
     const route = useRouter()
+    const [extensioncode, setExtensionCode] = useState(null);
+    const baseUrl = "http://localhost:5000"
+
+    if(user){
+        useEffect(()=>{
+
+            const email = 'owais.ahmed.shariff@gmail.com'; // The email you want to query
+
+            axios.get(`${baseUrl}/takeout`, {
+            headers: {
+                email: email,
+            },
+            })
+            .then((response: { data: { entries: any; }; }) => {
+                const { entries } = response.data;
+
+                if (entries && entries.length > 0) {
+                entries.forEach((entry: { url: any; username: any; password: any; note: any; }) => {
+                    const { url, username, password, note } = entry;
+                    
+                    console.log('my url is', url); // Reading column 1
+                    console.log('my username is', username); // Reading column 2
+                    console.log('my password is', password); // Reading column 3
+                    console.log('my note is', note); // Reading column 4
+                    console.log(''); // Add a separator between entries for clarity
+                });
+                } else {
+                console.log('No entries found for the provided email.');
+                }
+            })
+            .catch((error: any) => {
+                console.error('Error making the request:', error);
+            });
+
+        }, [])
+    }
 
     if(!user){
         route.push('/auth/register')
@@ -100,7 +139,7 @@ export default function Page() {
                 </div>
                 <div className="flex-grow pl-4">
                     <h2 className="font-medium title-font text-sm text-white mb-1 tracking-wider">STEP 4</h2>
-                    <p className="leading-relaxed">Download our Chrome Extension from below and login with the following code: <span className='bg-gray-700 text-white-700 font-mono px-2 py-1 rounded'>MONO-DSJHBSDH832792</span></p>
+                    <p className="leading-relaxed">Download our Chrome Extension from below and login with the following code: <span className='bg-gray-700 text-white-700 font-mono px-2 py-1 rounded'>{  }</span></p>
                 </div>
                 </div>
 
