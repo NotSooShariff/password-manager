@@ -1,7 +1,16 @@
+# .bat file for Windows:
+# @echo off
+# set /p message=Enter commit message: 
+# git add .
+# git commit -m "%message%"
+# git push origin main
+
+
+.PHONY: gt
+
 gt:
-	git add .
-	git commit -m "Makefile Commit"
-	git push origin main
+	@call git-push.bat
 
 r:
 	npm run dev
+
