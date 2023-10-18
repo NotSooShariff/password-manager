@@ -20,10 +20,6 @@ import AuthForm from '@/components/login/supalog'
 export default function Login() {
   const router = useRouter()
   const [user, loading] = useAuthState(auth)
-  
-  // const supalogin = async() =>{
-  //   let { data , error } = await supabase.auth.signUp
-  // }
 
   if(user){
     router.push('/dashboard')
@@ -59,6 +55,7 @@ export default function Login() {
       })
       .catch((error) => console.error("Error fetching IP location:", error));
   }, []);
+
   return (
     <>
     <div className="h-screen overflow-hidden scroll-hidden"> 

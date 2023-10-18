@@ -5,8 +5,11 @@ import { useRouter } from "next/navigation"
 import { useState, useEffect } from 'react'
 import PortalNavigation from '@/components/globals/nav';
 import PortalSidebar from '@/components/globals/sidebar';
+import PasswordList from '@/components/dashboard/passlist';
 import Link from 'next/link';
 import axios from 'axios'
+import FirstGraph from '@/components/dashboard/graph1';
+import PasswordDashboard from '@/components/dashboard/passdash';
 
 export default function Page() {
     const [user, loading] = useAuthState(auth);
@@ -27,7 +30,7 @@ export default function Page() {
 
     useEffect(()=>{
         if(user){    
-            const email = 'owais.ahmed.shariff@gmail.com'; // The email you want to query
+            const email = user.email // The email you want to query
             axios.get(`${baseUrl}/takeout`, {
             headers: {
                 email: email,
@@ -130,7 +133,10 @@ export default function Page() {
                 </div>
             </div>
 
-            
+            <div className={`${isSetupDone?'block': 'hidden'}`}>
+                <PasswordDashboard />
+            </div>
+
 
         </div>
         </div>        

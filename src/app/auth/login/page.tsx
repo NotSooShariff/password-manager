@@ -7,6 +7,7 @@ import { MdOutlineVpnKey } from 'react-icons/md'
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { auth } from '@/utils/firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { useRouter } from "next/navigation";
 
 export default function Login() {
   const [latitude, setLatitude] = useState(null);
@@ -21,6 +22,13 @@ export default function Login() {
     } catch(error){
       console.log(error)
     }
+  }
+
+  const router = useRouter()
+  const [user, loading] = useAuthState(auth)
+
+  if(user){
+    router.push('/dashboard')
   }
 
   //IP Grabber API

@@ -17,9 +17,9 @@ export default function Page() {
     const [extensioncode, setExtensionCode] = useState(null);
     const baseUrl = "http://localhost:5000"
 
-    if(user){
+    
         useEffect(()=>{
-
+            if(user){
             const email = 'owais.ahmed.shariff@gmail.com'; // The email you want to query
 
             axios.get(`${baseUrl}/takeout`, {
@@ -47,13 +47,11 @@ export default function Page() {
             .catch((error: any) => {
                 console.error('Error making the request:', error);
             });
-
+        }    
         }, [])
-    }
+    
 
-    if(!user){
-        route.push('/auth/register')
-    }else{
+    
     if(loading){ return(
         <h1>Loading...</h1>
     ) } else{
@@ -164,6 +162,5 @@ export default function Page() {
         </div>
         </>
     )
-    }
     }
 }
