@@ -8,7 +8,6 @@ import PortalSidebar from '@/components/globals/sidebar';
 import PasswordList from '@/components/dashboard/passlist';
 import Link from 'next/link';
 import axios from 'axios'
-import FirstGraph from '@/components/dashboard/graph1';
 
 export default function Page() {
     const [user, loading] = useAuthState(auth);
@@ -68,7 +67,7 @@ export default function Page() {
         <div className="p-4 w-9/12 sm:ml-64">
         <div className="translate-x-7 p-8 rounded-lg dark:border-gray-700 mt-14">
             <h1 className='text-4xl font-bold pb-4'>Password Manager 🛡️</h1>
-            <p className='pb-4'>{ isSetupDone ? "Welcome to your Password Manager. Manage your saved passwords in Android or Chrome. They're securely stored in your Monolith Account and available across all login forms via the Chrome extension" : `There doesnt seem to be much for you to do here. Complete the setup to get your dashboard up and running!`}</p>
+            <p className='pb-4'>{ isSetupDone ? "Welcome to your Password Manager. Manage your saved passwords in Android or Chrome. They're securely stored in your Monolith Account and available across all login forms via the Chrome extension" : `There doesnt seem to be much for you to do here. Complete the setup to let your password manager do the heavy lifting for you`}</p>
             <button onClick={()=>route.push('/setup')} className={`py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-full border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 ${isSetupDone?'hidden': 'block'}`}>Complete Setup</button>
             
             {/* Triplets */}
@@ -126,7 +125,10 @@ export default function Page() {
 
             <div className={`grid grid-cols-2 gap-4 mb-4  ${isSetupDone?'block': 'hidden'}`}>
             </div>
-            <PasswordList/>
+            
+            <div className={`${isSetupDone ? 'block' : 'hidden'}`}>
+                <PasswordList/>
+            </div>
 
 
 

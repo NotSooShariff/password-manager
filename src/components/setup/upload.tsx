@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import React from 'react';
 import { BsShieldFillCheck } from 'react-icons/bs'
 import { PiWarningBold } from 'react-icons/pi'
-import supabase from '@/config/supabaseClient';
 import axios from 'axios';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '@/utils/firebase';

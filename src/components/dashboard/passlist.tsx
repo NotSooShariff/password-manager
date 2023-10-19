@@ -21,8 +21,31 @@ const PasswordList = () => {
     const route = useRouter();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isSetupDone, setIsSetupDone] = useState(false);
+    const [isPasswordView, setPasswordView] = useState(false);
     const baseUrl = "http://localhost:5000";
     const [entries, setEntries] = useState<Entry[]>([]); // Specify the type 'Entry[]'
+
+    const [countdown, setCountdown] = useState(10);
+
+    const startCountdown = () => {
+        let timer = setInterval(() => {
+            setCountdown((prevCount) => {
+                if (prevCount > 1) {
+                    return prevCount - 1;
+                } else {
+                    clearInterval(timer);
+                    setPasswordView(false);
+                    return 10; // Reset the countdown to 10 seconds
+                }
+            });
+        }, 1000);
+    };
+
+    useEffect(() => {
+        if (isPasswordView) {
+            startCountdown();
+        }
+    }, [isPasswordView]);
 
     useEffect(() => {
         if (user) {
@@ -64,10 +87,26 @@ const PasswordList = () => {
         return domain;
     }
 
-    
+    function togglePasswords(){
+        if(isPasswordView){
+            setPasswordView(false)
+        }else{
+            setPasswordView(true)
+            timeTick()
+        }
+    }
+
+    const timeTick = () => {
+        setTimeout(() => {
+          setPasswordView(false);
+        }, 10000);
+    }
 
     return (
-        <>
+        <>  
+            <p className={`text-red-500 px-2 py-3 dark:text-red-500 ${isPasswordView? 'block' : 'hidden'}`}>
+                    Your passwords will be hidden again in {countdown} seconds in accordance with the security policy.
+            </p>
             <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
             <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                 <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -79,11 +118,11 @@ const PasswordList = () => {
                             Username
                         </th>
                         <th scope="col" className="px-6 py-3">
-                            Password Hash
+                        { !isPasswordView && ("Password Hash") }{ isPasswordView && ("Password")}
                         </th>
-                        {/* <th scope="col" className="px-6 py-3">
-                            Note
-                        </th> */}
+                        <th scope="col" className={`px-6 py-3 ${isPasswordView ? 'block' : 'hidden'}`}>
+                            Security
+                        </th>
                         <th scope="col" className="px-6 py-3">
                             
                         </th>
@@ -94,10 +133,12 @@ const PasswordList = () => {
                         <tr key={index} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                             <td className="px-6 py-4"> <a href={entry.url} target='_blank'>{entry.note}</a> </td>
                             <td className="px-6 py-4">{entry.username}</td>
-                            <td className="px-6 py-4">{SHA1(entry.password).toString()} </td>
-                            {/* <td className='px-6 py-4'>••••••••</td> */}
-                            {/* <td className="px-6 py-4">{entry.note} </td> */}
-                            <td className='text-blue-400 px-6 py-4'><a href="/dashboard">ANALYSE</a></td>
+                            <td className="px-6 py-4">{ !isPasswordView && (SHA1(entry.password).toString()) } { isPasswordView && (entry.password)} </td>
+                            <td className={`px-6 py-4 ${ isPasswordView ? 'block' : 'hidden'}`}>
+                                SHA-1
+                            </td>
+                            <td className='text-blue-400 px-6 py-4'><a onClick={togglePasswords}>{ !isPasswordView && ("VIEW") }{ isPasswordView && ("HIDE")}</a></td>
+                            
                         </tr>
                     ))}
                 </tbody>
