@@ -5,13 +5,12 @@ import { useRouter } from "next/navigation"
 import { useState, useEffect } from 'react'
 import PortalNavigation from '@/components/globals/nav';
 import PortalSidebar from '@/components/globals/sidebar';
-import PasswordList from '@/components/dashboard/passlist';
 import Link from 'next/link';
 import axios from 'axios'
-import FirstGraph from '@/components/dashboard/graph1';
 import PasswordDashboard from '@/components/dashboard/passdash';
 
 export default function Page() {
+
     const [user, loading] = useAuthState(auth);
     const route = useRouter()
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -27,10 +26,9 @@ export default function Page() {
         route.push('/')
     }
 
-
     useEffect(()=>{
         if(user){    
-            const email = user.email // The email you want to query
+            const email = user.email 
             axios.get(`${baseUrl}/takeout`, {
             headers: {
                 email: email,
@@ -43,11 +41,11 @@ export default function Page() {
             entries.forEach((entry: { url: any; username: any; password: any; note: any; }) => {
                 const { url, username, password, note } = entry;
                 
-                console.log('my url is', url); // Reading column 1
-                console.log('my username is', username); // Reading column 2
-                console.log('my password is', password); // Reading column 3
-                console.log('my note is', note); // Reading column 4
-                console.log(''); // Add a separator between entries for clarity
+                console.log('url', url); 
+                console.log('username', username); 
+                console.log('password', password); 
+                console.log('note', note);
+                console.log(''); 
             });
             } else {
             console.log('No entries found for the provided email.');
@@ -129,6 +127,20 @@ export default function Page() {
                     <svg className="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
                     </svg>
+                    </p>
+                </div>
+            </div>
+
+            <div className={`grid grid-cols-2 gap-4 mb-4  ${isSetupDone?'block': 'hidden'}`}>
+                
+                <div className="flex items-center justify-center rounded h-28  bg-gray-800 border-gray-500">
+                    <p className="text-2xl text-gray-400 dark:text-gray-500">
+                    
+                    </p>
+                </div>
+                <div className="flex items-center justify-center rounded h-28  bg-gray-800 border-gray-500">
+                    <p className="text-2xl text-gray-400 dark:text-gray-500">
+                    
                     </p>
                 </div>
             </div>

@@ -18,37 +18,26 @@ export default function Page() {
     const baseUrl = "http://localhost:5000"
 
     
-        useEffect(()=>{
-            if(user){
-            const email = 'owais.ahmed.shariff@gmail.com'; // The email you want to query
-
-            axios.get(`${baseUrl}/takeout`, {
-            headers: {
-                email: email,
-            },
-            })
-            .then((response: { data: { entries: any; }; }) => {
-                const { entries } = response.data;
-
-                if (entries && entries.length > 0) {
-                entries.forEach((entry: { url: any; username: any; password: any; note: any; }) => {
-                    const { url, username, password, note } = entry;
-                    
-                    console.log('my url is', url); // Reading column 1
-                    console.log('my username is', username); // Reading column 2
-                    console.log('my password is', password); // Reading column 3
-                    console.log('my note is', note); // Reading column 4
-                    console.log(''); // Add a separator between entries for clarity
-                });
-                } else {
-                console.log('No entries found for the provided email.');
-                }
-            })
-            .catch((error: any) => {
-                console.error('Error making the request:', error);
-            });
-        }    
-        }, [])
+    useEffect(() => {
+        if (user && user.email) {
+          axios.get('http://localhost:5000/extensioncode', {
+            params: {
+              email: user.email,
+            }
+          })
+          .then(response => {
+            if (response.data) {
+              const code = response.data;
+              setExtensionCode(code);
+            } else {
+              console.error('No extension code found in the response');
+            }
+          })
+          .catch(error => {
+            console.error('Error fetching extension code:', error);
+          });
+        }
+      }, []);
     
 
     
@@ -125,7 +114,7 @@ export default function Page() {
                 </div>
 
                 {/* Step 4 */}
-                <div className="flex relative pb-12">
+                {/* <div className="flex relative pb-12">
                 <div className="h-full w-10 absolute inset-0 flex items-center justify-center">
                     <div className="h-full w-1 bg-gray-800 pointer-events-none"></div>
                 </div>
@@ -137,9 +126,9 @@ export default function Page() {
                 </div>
                 <div className="flex-grow pl-4">
                     <h2 className="font-medium title-font text-sm text-white mb-1 tracking-wider">STEP 4</h2>
-                    <p className="leading-relaxed">Download our Chrome Extension from below and login with the following code: <span className='bg-gray-700 text-white-700 font-mono px-2 py-1 rounded'>{  }</span></p>
+                    <p className="leading-relaxed">Download our Chrome Extension from below and login with the following code: <span className='bg-gray-700 text-white-700 font-mono px-2 py-1 rounded'>{ extensioncode }</span></p>
                 </div>
-                </div>
+                </div> */}
 
                 {/* Step Final */}
                 <div className="flex relative">
