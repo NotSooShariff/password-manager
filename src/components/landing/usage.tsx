@@ -56,7 +56,7 @@ const UsageSection = () =>{
                 </div>
                 <div className="flex-grow sm:pl-6 mt-6 sm:mt-0">
                 <h2 className="font-medium title-font text-white mb-1 text-xl">Install Our Chrome Extension</h2>
-                <p className="leading-relaxed">Safeguard your online experience effortlessly with our Chrome extension. It's your all-in-one solution for easy password autofill and protection against IP leaks.</p>
+                <p className="leading-relaxed">Safeguard your online experience effortlessly with our Chrome extension. It&apos;s your all-in-one solution for easy password autofill and protection against IP leaks.</p>
                 </div>
             </div>
             </div>

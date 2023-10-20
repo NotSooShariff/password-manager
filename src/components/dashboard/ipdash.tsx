@@ -40,7 +40,7 @@ const IPBanner = () =>{
                 'Loading...'
               ) : (
                 <>
-                  Our system suggests your IP isn't protected well enough. Your IP is {ipInfo?.dns.ip} which is based in {ipInfo?.dns.geo}. Login now to protect your digital identity better.
+                  Our system suggests your IP isn&apos;t protected well enough. Your IP is {ipInfo?.dns.ip} which is based in {ipInfo?.dns.geo}. Login now to protect your digital identity better.
                 </>
               )}
             </p>

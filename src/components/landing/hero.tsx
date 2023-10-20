@@ -23,7 +23,7 @@ const HeroSection = () => {
                         delaySpeed={2000}
                     />
                 </h1>
-                <p className="mb-8 leading-relaxed">Safeguarding your digital world has never been this effortless. Experience the future of online protection with our all-in-one security solution. Manage passwords, monitor data leaks, protect your digital identity, and more. It's time to take control.</p>
+                <p className="mb-8 leading-relaxed">Safeguarding your digital world has never been this effortless. Experience the future of online protection with our all-in-one security solution. Manage passwords, monitor data leaks, protect your digital identity, and more. It&apos;s time to take control.</p>
                 <div className="flex justify-center">
                     <button className="inline-flex text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-blue-600 rounded text-lg"><Link href="https://github.com/NotSooShariff/Password-Manager">GitHub</Link></button>
                     <button className="ml-4 inline-flex text-gray-400 bg-gray-800 border-0 py-2 px-6 focus:outline-none hover:bg-gray-700 hover:text-white rounded text-lg">Documentation</button>
