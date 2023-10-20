@@ -18,7 +18,7 @@ const ContactSection = () => {
             Have a Question? Write to Us!
           </h1>
           <p className="lg:w-2/3 mx-auto leading-relaxed text-base">
-            Whether you have questions, feedback, or need support, our team is just a click away. Feel free to reach out, and we'll get back to you as soon as possible.
+            Whether you have questions, feedback, or need support, our team is just a click away. Feel free to reach out, and we&apos;ll get back to you as soon as possible.
           </p>
         </div>
         <form onSubmit={handleSubmit}>

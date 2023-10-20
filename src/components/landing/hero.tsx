@@ -3,6 +3,7 @@ import React from 'react'
 import Link from 'next/link';
 import HeroImage from '@/assets/images/hero.png'
 import { Typewriter } from 'react-simple-typewriter'
+import Image from 'next/image'
 
 const HeroSection = () => {
     return(
@@ -29,7 +30,7 @@ const HeroSection = () => {
                 </div>
                 </div>
                 <div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
-                <img className="object-cover object-center rounded" alt="hero" src={HeroImage.src}></img>
+                <Image className="object-cover object-center rounded" alt="hero" src={HeroImage.src}/>
                 </div>
             </div>
             </section>
