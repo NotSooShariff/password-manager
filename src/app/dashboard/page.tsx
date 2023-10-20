@@ -8,6 +8,20 @@ import PortalSidebar from '@/components/globals/sidebar';
 import Link from 'next/link';
 import axios from 'axios'
 import PasswordDashboard from '@/components/dashboard/passdash';
+import { FaRegAddressCard } from 'react-icons/fa6'
+import { BsGlobe2 } from 'react-icons/bs'
+import { FaMapLocationDot } from 'react-icons/fa6'
+
+type IPInfo = {
+    dns: {
+      ip: string;
+      geo: string;
+    };
+    edns: {
+      ip: string;
+      geo: string;
+    };
+};
 
 export default function Page() {
 
@@ -16,7 +30,7 @@ export default function Page() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isSetupDone, setIsSetupDone] = useState(false);
     const baseUrl = "http://localhost:5000"
-
+    const [counter, setCount] = useState(0)
     const toggleUserMenu = () => {
         setIsMenuOpen(!isMenuOpen);
     };
@@ -37,6 +51,7 @@ export default function Page() {
         .then((response: { data: { entries: any; }; }) => {
             const { entries } = response.data;
             if(entries.length>0) setIsSetupDone(true)
+            setCount(entries.length)
             if (entries && entries.length > 0) {
             entries.forEach((entry: { url: any; username: any; password: any; note: any; }) => {
                 const { url, username, password, note } = entry;
@@ -46,6 +61,7 @@ export default function Page() {
                 console.log('password', password); 
                 console.log('note', note);
                 console.log(''); 
+
             });
             } else {
             console.log('No entries found for the provided email.');
@@ -57,11 +73,30 @@ export default function Page() {
     }
     }, [user])
 
+    const [ipInfo, setIpInfo] = useState<IPInfo | null>(null);
+    const [load, setLoading] = useState(true);
+  
+    useEffect(() => {
+      fetch('http://edns.ip-api.com/json')
+        .then((response) => response.json())
+        .then((data) => {
+          setIpInfo(data);
+          setLoading(false);
+        })
+        .catch((error) => {
+          console.error('Error fetching IP info:', error);
+          setLoading(false);
+        });
+    }, []);
+
     
 
-    if(!user){
-        route.push('/auth/register')
-    }else{
+    useEffect(()=>{
+        if(!user){
+            route.push('/auth/register')
+        }
+    }, [])
+
     if(loading){ return(
         <h1>Loading...</h1>
     ) } else{
@@ -74,7 +109,7 @@ export default function Page() {
         {/* Useless Grid */}
         <div className="p-4 w-9/12 sm:ml-64">
         <div className="translate-x-7 p-8 rounded-lg dark:border-gray-700 mt-14">
-            <h1 className='text-4xl font-bold pb-4'>Hello {user.displayName} 👋</h1>
+            <h1 className='text-4xl font-bold pb-4'>Hello {user && user.displayName} 👋</h1>
             <p className='pb-4'>{ isSetupDone ? "Here is your personal security briefing" : `There doesnt seem to be much for you to do here. Complete the setup to get your dashboard up and running!`}</p>
             <button onClick={()=>route.push('/setup')} className={`py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-full border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 ${isSetupDone?'hidden': 'block'}`}>Complete Setup</button>
             
@@ -131,16 +166,36 @@ export default function Page() {
                 </div>
             </div>
 
-            <div className={`grid grid-cols-2 gap-4 mb-4  ${isSetupDone?'block': 'hidden'}`}>
+            <div className={`grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 mb-4 ${isSetupDone ? 'block' : 'hidden'}`}>
                 
-                <div className="flex items-center justify-center rounded h-28  bg-gray-800 border-gray-500">
-                    <p className="text-2xl text-gray-400 dark:text-gray-500">
-                    
+                <div className="flex flex-col md:flex-row items-center justify-center rounded h-auto  bg-gray-800 border-gray-500">
+                    <div className="ml-4 my-2 py-4 px-4 flex-shrink-0 w-20 h-20 bg-gray-700 text-blue-400 rounded-full inline-flex items-center justify-center">
+                    <FaRegAddressCard className="w-20 h-20"/>
+                    </div>
+                    <p className="py-4 px-4 text text-gray-400 dark:text-gray-400">
+                        <strong>Saved Passwords:</strong> {counter} <br />
+                        <strong>Saved Email Addresses:</strong> 1    <br />
+                        <strong>Automated Scans:</strong> 
                     </p>
                 </div>
-                <div className="flex items-center justify-center rounded h-28  bg-gray-800 border-gray-500">
-                    <p className="text-2xl text-gray-400 dark:text-gray-500">
-                    
+                <div className="flex flex-col md:flex-row items-center justify-center rounded h-auto  bg-gray-800 border-gray-500">
+                    <div className="ml-4 my-2 py-4 px-4 flex-shrink-0 w-20 h-20 bg-gray-700 text-blue-400 rounded-full inline-flex items-center justify-center">
+                    <BsGlobe2 className="w-20 h-20"/>
+                    </div>
+                    <p className="py-4 px-4 text text-gray-400 dark:text-gray-400">
+                        <strong>IP Address:</strong> {ipInfo?.dns.ip} <br />
+                        <strong>WebRTC Status:</strong> <span className=''>Exposed</span> <br />
+                        <p className='text-yellow-400'> <strong><a href="https://chrome.google.com/webstore/detail/webrtc-leak-shield/bppamachkoflopbagkdoflbgfjflfnfl" target='_blank'>MASK NOW</a></strong></p>
+                    </p>
+                </div>
+                <div className="flex flex-col md:flex-row items-center justify-center rounded h-auto  bg-gray-800 border-gray-500">
+                    <div className="ml-4 my-2 py-4 px-4 flex-shrink-0 w-20 h-20 bg-gray-700 text-blue-400 rounded-full inline-flex items-center justify-center">
+                    <FaMapLocationDot className="w-20 h-20"/>
+                    </div>
+                    <p className="py-4 px-4 text text-gray-400 dark:text-gray-400">
+                        <strong>Location:</strong> {ipInfo?.dns.geo} <br />
+                        <strong>Status:</strong> <span className=''>Exposed</span>
+
                     </p>
                 </div>
             </div>
@@ -155,5 +210,5 @@ export default function Page() {
         </>
     )
     }
-    }
+
 }

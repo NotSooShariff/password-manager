@@ -6,7 +6,6 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '@/utils/firebase';
 import axios from "axios";
 import { useRouter } from 'next/navigation';
-import { SHA1 } from "crypto-js";
 
 interface Entry {
   url: string;
@@ -79,7 +78,7 @@ export default function Page() {
               Your password for this site was found in a data breach! We reccomend that you change this imediately
             </p>
             <a
-              href={entry.url}
+              href={entry.url} target='_blank'
               className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-red-700 rounded-lg hover-bg-blue-800 focus:ring-4 focus-outline-none focus-ring-blue-300 dark-bg-blue-600 dark-hover-bg-blue-700 dark-focus-ring-blue-800"
             >
               Change now
@@ -152,7 +151,7 @@ export default function Page() {
         <div className="translate-x-7 p-8 rounded-lg dark:border-gray-700 mt-14">
           <h1 className='text-4xl font-bold pb-4'>Breach Alerts ⚠️</h1>
           <p className='pb-4'>{isSetupDone ? "We are actively monitoring data dumps & dark web leaks for any trace of your personally identifiable information or credentials" :"There doesn't seem to be much to do here. Complete the setup to enable data dump & dark web leak monitoring for your passwords."}</p>
-          <button onClick={() => route.push('/setup')} className={`py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-full border border-gray-200 hover-bg-gray-100 hover-text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark-text-gray-400 dark-border-gray-600 dark-hover-text-white dark-hover-bg-gray-700 ${isSetupDone ? 'hidden' : 'block'}`}>Complete Setup</button>
+          <button onClick={()=>route.push('/setup')} className={`py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-full border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 ${isSetupDone?'hidden': 'block'}`}>Complete Setup</button>
 
           {/* Triplets */}
           <div className={`pt-4 grid grid-cols-3 gap-4 mb-4 ${isSetupDone ? 'hidden' : 'block'}`}>
