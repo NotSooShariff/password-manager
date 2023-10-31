@@ -75,7 +75,6 @@ Before you begin, ensure you have the following prerequisites installed:
 First, Get your database up and running:
 ```
  docker run -d --name my-mongodb-container -p 5000:5000 notsooshariff/mono-db
-
 ```
 
 Once your database is running and your Firebase keys have been configured, run the development server:
