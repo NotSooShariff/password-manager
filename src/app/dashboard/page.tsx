@@ -56,11 +56,8 @@ export default function Page() {
             entries.forEach((entry: { url: any; username: any; password: any; note: any; }) => {
                 const { url, username, password, note } = entry;
                 
-                console.log('url', url); 
-                console.log('username', username); 
-                console.log('password', password); 
-                console.log('note', note);
-                console.log(''); 
+                console.log('DB Retrieved:  ', url); 
+
 
             });
             } else {

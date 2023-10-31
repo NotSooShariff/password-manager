@@ -1,4 +1,60 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## 🔐 Monolith Password Manager Documentation
+
+### 1. Introduction
+
+#### Overview
+Monolith is a password manager application developed for users who want to self host their password managers on their own infrastructures rather than giving the control over to a third party. It allows users to securely store and manage their passwords. This documentation provides a guide on how to use the Monolith application.
+
+#### Features
+- User authentication using Firebase
+- Docker container for database deployment
+- Secure password storage
+- Password generation
+- Password retrieval
+- Password management
+----------------------------------------------------------------------------------
+### 2. Getting Started
+
+#### Prerequisites
+Before you begin, ensure you have the following prerequisites installed:
+- [Node.js & npm (Node Package Manager)](https://nodejs.org/en/download)
+- [Git](https://git-scm.com/downloads)
+- [Docker](https://docs.docker.com/desktop/install/windows-install/) 
+- [Firebase account](https://console.firebase.google.com/)
+- [Make](https://gnuwin32.sourceforge.net/packages/make.htm) (Optional) 
+- A hosting provider (Optional)
+  
+
+#### Installation
+1. Clone the Monolith repository from GitHub. Using the following command:
+   ```
+    git clone 
+   ```
+2. Navigate to the project directory using the following commands:
+   ```
+    cd Password-Manager
+    ```
+3. Install dependencies using:
+   ```
+    npm install
+    ```
+4. Pull the database from docker:
+   ```
+    docker pull notsooshariff/mono-db
+    ```
+
+### 3. User Authentication
+
+#### Firebase Setup
+- Create a Firebase project at [Firebase Console](https://console.firebase.google.com/).
+- Obtain Firebase API Keys (apiKey, authDomain, projectId, etc.).
+- Use the `.env.template` to create a `.env.local` and paste all your API Keys there so that the app can access these variables locally. 
+- Once you have set this up, you will be able to use Firebase OAUTH to Login to your Application.
+
+### 4. Application Structure
+
+#### Project Directory
+-  The application follows a typical NextJS project's structure with the latest version 
 
 ## Getting Started
 
@@ -14,23 +70,5 @@ pnpm dev
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the website live.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.

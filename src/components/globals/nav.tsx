@@ -44,7 +44,7 @@ const PortalNavigation = () =>{
                     <div>
                     <button onClick={toggleUserMenu} type="button" className=" flex text-l bg-gray-900 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" aria-expanded="false" data-dropdown-toggle="dropdown-user">
                         <span className="sr-only">Open user menu</span>
-                        <Image onLoad={!user ? handleUnauth : undefined} className="w-8 h-8 rounded-full" src={user ? user.photoURL ?? "https://dummyimage.com/201x201" : "https://dummyimage.com/201x201"} alt="user photo"/>
+                        <img onLoad={!user ? handleUnauth : undefined} className="w-8 h-8 rounded-full" src={user ? user.photoURL ?? "https://dummyimage.com/201x201" : "https://dummyimage.com/201x201"} alt="user photo"/>
                     </button>
                     </div>
                     <div className="absolute top-full right-5 z-50 p-2">

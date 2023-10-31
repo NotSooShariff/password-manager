@@ -64,24 +64,15 @@ const UploadForm = () => {
                   note: note,
                 };
                 
-                // URL-encode the requestData object
-                const encodedData = querystring.stringify(requestData);
+                console.log(requestData.note, "TreTewTan")
                 
-                // Send a POST request to the store endpoint
-                axios.post(`${baseUrl}/store`, encodedData, {
-                  headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded', // Set the content type
-                  },
-                })
-                  .then(response => {
-                    // Handle the response from the server
-                    console.log('Data stored successfully:', response.data);
+                axios.post('http://your-flask-api-url/keep', requestData)
+                  .then((response) => {
+                    console.log('Response:', response.data);
                   })
-                  .catch(error => {
-                    // Handle any errors that occur during the request
+                  .catch((error) => {
                     console.error('Error:', error);
                   });
-
                   
                 
               }

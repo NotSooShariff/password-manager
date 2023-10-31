@@ -30,7 +30,7 @@ const HeroSection = () => {
                 </div>
                 </div>
                 <div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
-                <Image className="object-cover object-center rounded" alt="hero" src={HeroImage.src}/>
+                <img className="object-cover object-center rounded" alt="hero" src={HeroImage.src}/>
                 </div>
             </div>
             </section>
