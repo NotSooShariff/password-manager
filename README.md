@@ -36,7 +36,7 @@ Before you begin, ensure you have the following prerequisites installed:
 #### Installation
 1. Clone the Monolith repository from GitHub. Using the following command:
    ```
-    git clone 
+    git clone https://github.com/NotSooShariff/Password-Manager.git
    ```
 2. Navigate to the project directory using the following commands:
    ```
