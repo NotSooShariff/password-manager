@@ -3,7 +3,7 @@
 ### 1. Introduction
 
 #### Overview
-Monolith is a password manager application developed for users who want to self host their password managers on their own infrastructures rather than giving the control over to a third party. It allows users to securely store and manage their passwords. This documentation provides a guide on how to use the Monolith application.
+Monolith is a password manager application and a complete user data leak prevention system developed for users who either want to self-host their password managers on their own infrastructures rather than giving the control over to a third party or for organizations or people who aren't as tech-savvy and want to take charge of their digital security and privacy. It allows users to securely store and manage their passwords. This documentation provides a guide on how to use the Monolith application.
 
 #### Features
 - User authentication using Firebase
@@ -63,7 +63,7 @@ Before you begin, ensure you have the following prerequisites installed:
 - Create a Firebase project at [Firebase Console](https://console.firebase.google.com/).
 - Obtain Firebase API Keys (apiKey, authDomain, projectId, etc.).
 - Use the `.env.template` to create a `.env.local` and paste all your API Keys there so that the app can access these variables locally. 
-- Once you have set this up, you will be able to use Firebase OAUTH to Login to your Application.
+- Once you have set this up, you will be able to use Firebase OAUTH to log in to your Application.
 
 ### 4. Application Structure
 
@@ -72,7 +72,13 @@ Before you begin, ensure you have the following prerequisites installed:
 
 ## Getting Started
 
-First, run the development server:
+First, Get your database up and running:
+```
+ docker run -d --name my-mongodb-container -p 5000:5000 notsooshariff/mono-db
+
+```
+
+Once your database is running and your Firebase keys have been configured, run the development server:
 
 ```bash
 npm run dev
