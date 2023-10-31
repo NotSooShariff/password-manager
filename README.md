@@ -12,7 +12,15 @@ Monolith is a password manager application developed for users who want to self 
 - Password generation
 - Password retrieval
 - Password management
-----------------------------------------------------------------------------------
+
+#### Tech Stack
+- NextJS
+- TypeScript
+- TailwindCSS
+- Firebase
+- Docker
+- Snyk
+
 ### 2. Getting Started
 
 #### Prerequisites
