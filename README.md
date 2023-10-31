@@ -21,6 +21,12 @@ Monolith is a password manager application developed for users who want to self 
 - Docker
 - Snyk
 
+### Components / Solution Infrastructure
+
+These are the components of our solution (and where to find them):
+![Schematic](public/solution-infrastructure.png)
+
+
 ### 2. Getting Started
 
 #### Prerequisites

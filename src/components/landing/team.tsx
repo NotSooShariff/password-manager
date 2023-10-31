@@ -1,6 +1,6 @@
 import React from 'react'
 import { FiGithub , FiMail, FiInstagram } from 'react-icons/fi'
-import Image from 'next/image'
+import Image from "next/image"
 
 const TeamSection = () => {
     return(
@@ -13,11 +13,11 @@ const TeamSection = () => {
             <div className="flex flex-wrap -m-4">
             <div className="p-4 lg:w-1/2">
                 <div className="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left">
-                <img alt="team" className="flex-shrink-0 rounded-lg w-48 h-48 object-cover object-center sm:mb-0 mb-4" src="https://dummyimage.com/200x200"/>
+                <Image width={192} height={192} alt="team" className="flex-shrink-0 rounded-lg w-48 h-48 object-cover object-center sm:mb-0 mb-4" src="/owais.jpeg"/>
                 <div className="flex-grow sm:pl-8">
                     <h2 className="title-font font-medium text-lg text-white">Owais Shariff</h2>
-                    <h3 className="text-gray-500 mb-3">Fullstack Developer</h3>
-                    <p className="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tincidunt dui et.</p>
+                    <h3 className="text-gray-500 mb-3">Fullstack Developer & Security Ops</h3>
+                    <p className="mb-4">Our adept specialist in Development, Integrations, and Security Operations. He ensures that your password manager not only boasts an exceptional experience but also serves as a bastion of robust security.</p>
                     <span className="inline-flex">
                     <FiGithub className="m-1 text-xl"/>
                     <FiMail className="m-1 text-xl"/>
@@ -28,11 +28,11 @@ const TeamSection = () => {
             </div>
             <div className="p-4 lg:w-1/2">
                 <div className="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left">
-                <img alt="team" className="flex-shrink-0 rounded-lg w-48 h-48 object-cover object-center sm:mb-0 mb-4" src="https://dummyimage.com/201x201"/>
+                <Image width={192} height={192} alt="team" className="flex-shrink-0 rounded-lg w-48 h-48 object-cover object-center sm:mb-0 mb-4" src="/yeshwanth.jpg"/>
                 <div className="flex-grow sm:pl-8">
                     <h2 className="title-font font-medium text-lg text-white">Yeswanth Prasad</h2>
                     <h3 className="text-gray-500 mb-3">AI/ML Developer</h3>
-                    <p className="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tincidunt dui et.</p>
+                    <p className="mb-4">He is our Machine Learning Maestro, and the formidable intellect behind the AI sophistication within our password manager. He is dedicated to the precise training and continuous refinement of our machine learning models, heightening the security for your data. </p>
                     <span className="inline-flex">
                     <FiGithub className="m-1 text-xl"/>
                     <FiMail className="m-1 text-xl"/>
@@ -43,11 +43,11 @@ const TeamSection = () => {
             </div>
             <div className="p-4 lg:w-1/2">
                 <div className="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left">
-                <img alt="team" className="flex-shrink-0 rounded-lg w-48 h-48 object-cover object-center sm:mb-0 mb-4" src="https://dummyimage.com/204x204"/>
+                <Image width={192} height={192} alt="team" className="flex-shrink-0 rounded-lg w-48 h-48 object-cover object-center sm:mb-0 mb-4" src="/prabhav.jpg"/>
                 <div className="flex-grow sm:pl-8">
                     <h2 className="title-font font-medium text-lg text-white">Prabhav Mishra</h2>
                     <h3 className="text-gray-500 mb-3">Backend Developer</h3>
-                    <p className="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tincidunt dui et.</p>
+                    <p className="mb-4"> Prabhav is the driving force responsible for the intricate web of backend systems, APIs, and deployment that power our password manager. His meticulous oversight guarantees the secure storage and transmission of your data.</p>
                     <span className="inline-flex">
                     <FiGithub className="m-1 text-xl"/>
                     <FiMail className="m-1 text-xl"/>
@@ -58,11 +58,11 @@ const TeamSection = () => {
             </div>
             <div className="p-4 lg:w-1/2">
                 <div className="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left">
-                <img alt="team" className="flex-shrink-0 rounded-lg w-48 h-48 object-cover object-center sm:mb-0 mb-4" src="https://dummyimage.com/206x206"/>
+                <Image width={192} height={192} alt="team" className="flex-shrink-0 rounded-lg w-48 h-48 object-cover object-center sm:mb-0 mb-4" src="/pratham.jpg"/>
                 <div className="flex-grow sm:pl-8">
                     <h2 className="title-font font-medium text-lg text-white">Pratham Vidhani</h2>
-                    <h3 className="text-gray-500 mb-3">Designer</h3>
-                    <p className="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tincidunt dui et.</p>
+                    <h3 className="text-gray-500 mb-3">Design & Documentation</h3>
+                    <p className="mb-4">Pratham, our Design Virtuoso, shapes the visual identity of our password manager. Your experience is not only secure but also visually appealing thanks to his creative genius. Furthermore, Pratham serves as our Documentation Maven.</p>
                     <span className="inline-flex">
                     <FiGithub className="m-1 text-xl"/>
                     <FiMail className="m-1 text-xl"/>
