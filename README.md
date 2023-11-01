@@ -7,8 +7,6 @@ Monolith is a password manager application and a complete user data leak prevent
 
 You can watch an in-depth explanation of this project here:
 
-https://github.com/NotSooShariff/Password-Manager/raw/main/public/explainer.mp4 
-
 [![YouTube Explainer](https://img.youtube.com/vi/Tbqcxu5fYGg/0.jpg)](https://www.youtube.com/watch?v=Tbqcxu5fYGg)
 
 
