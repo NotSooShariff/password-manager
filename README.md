@@ -24,7 +24,7 @@ Monolith is a password manager application and a complete user data leak prevent
 ### Components / Solution Infrastructure
 
 These are the four components of our solution (and where to find them):
-![Schematic](public/solution-infrastructure.png)
+![Schematic](public/solution-infrastructures.png)
 
 
 ### 2. Getting Started
