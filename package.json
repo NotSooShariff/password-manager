@@ -12,7 +12,7 @@
     "@supabase/auth-helpers-nextjs": "^0.8.2",
     "@supabase/auth-ui-react": "^0.4.6",
     "@supabase/auth-ui-shared": "^0.1.8",
-    "@supabase/supabase-js": "^2.38.1",
+    "@supabase/supabase-js": "^2.38.2",
     "@types/crypto-js": "^4.1.2",
     "apexcharts": "^3.44.0",
     "axios": "^1.6.0",
