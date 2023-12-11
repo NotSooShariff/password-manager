@@ -3,7 +3,7 @@
 ### 1. Introduction
 
 #### Overview
-Monolith is a password manager application and a complete user data leak prevention system developed for users who either want to self-host their password managers on their own infrastructures rather than giving the control over to a third party or for organizations or people who aren't as tech-savvy and want to take charge of their digital security and privacy. It allows users to securely store and manage their passwords. This documentation provides a guide on how to use the Monolith application.
+Monolith is a password manager application and a complete user data leak prevention system developed for users who either want to self-host their password managers on their infrastructures rather than giving the control over to a third party or for organizations or people who aren't as tech-savvy and want to take charge of their digital security and privacy. It allows users to securely store and manage their passwords. This documentation provides a guide on how to use the Monolith application.
 
 You can watch an in-depth explanation of this project here:
 
