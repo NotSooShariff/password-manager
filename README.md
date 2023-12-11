@@ -96,3 +96,10 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the website live.
 
+# License
+
+This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/NotSooShariff/password-manager/LICENSE.md) file for details.
+
+# Contributions
+
+Contributions are welcome! Feel free to fork the repo and issue a pull request to improve this project.
