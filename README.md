@@ -7,8 +7,9 @@ Monolith is a password manager application and a complete user data leak prevent
 
 You can watch an in-depth explanation of this project by clicking here:
 
-[![YouTube Explainer](https://img.youtube.com/vi/Tbqcxu5fYGg/0.jpg)](https://www.youtube.com/watch?v=Tbqcxu5fYGg)
+https://github.com/NotSooShariff/password-manager/assets/93514938/9a4ecf20-a898-4ea1-831f-a469b16069ff
 
+📽️ Find it on YouTube: https://www.youtube.com/watch?v=Tbqcxu5fYGg
 
 #### Features
 - User authentication using Firebase
